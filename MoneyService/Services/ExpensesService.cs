@@ -1,17 +1,20 @@
 ﻿using MoneyService.Dto;
+using MoneyService.Entities;
 
 namespace MoneyService.Services
 {
     public class ExpensesService : IExpensesService
     {
-        public List<ExpenseDto> GetExpenses()
+        private readonly IMoneyContext context;
+
+        public ExpensesService(IMoneyContext context)
         {
-            return new List<ExpenseDto>
-            {
-                new ExpenseDto("Bus ticket", 41),
-                new ExpenseDto("Chiefburger", 150),
-                new ExpenseDto("Internet", 800)
-            };
+            this.context = context;
+        }
+
+        public List<ExpenseEntity> GetExpenses()
+        {            
+            return context.Expenses.ToList();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MoneyService.Controllers
         [HttpGet]
         public List<ExpenseDto> GetExpenses()
         {
-            return ExpensesService.GetExpenses();
+            return ExpensesService.GetExpenses().Select(e => new ExpenseDto(e.Name, e.Cost)).ToList();
         }
     }
 }
