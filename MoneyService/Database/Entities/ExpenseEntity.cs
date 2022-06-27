@@ -1,4 +1,4 @@
-﻿namespace MoneyService.Entities
+﻿namespace MoneyService.Database.Entities
 {
     public class ExpenseEntity
     {

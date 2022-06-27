@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MoneyService;
+using MoneyService.Database;
 using MoneyService.Services;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,5 +1,4 @@
-﻿using MoneyService.Dto;
-using MoneyService.Entities;
+﻿using MoneyService.Database.Entities;
 
 namespace MoneyService.Services
 {

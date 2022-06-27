@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MoneyService.Dto;
-using MoneyService.Entities;
+using MoneyService.Database.Entities;
 
-namespace MoneyService
+namespace MoneyService.Database
 {
     public interface IMoneyContext
     {
