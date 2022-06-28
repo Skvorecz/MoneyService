@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<IMoneyContext, MoneyContext>(options =>
-                                    options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Money"));
+                                    options.UseSqlServer(builder.Configuration.GetConnectionString("MoneyDb")));
 builder.Services.AddScoped<IExpensesService, ExpensesService>();
 builder.Services.AddHealthChecks();
 
