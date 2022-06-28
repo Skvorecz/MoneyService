@@ -1,5 +1,6 @@
 ﻿using MoneyService.Database;
 using MoneyService.Database.Entities;
+using MoneyService.Dto;
 
 namespace MoneyService.Services
 {
@@ -13,8 +14,18 @@ namespace MoneyService.Services
         }
 
         public List<ExpenseEntity> GetExpenses()
-        {            
+        {
             return context.Expenses.ToList();
+        }
+
+        public void CreateExpense(ExpenseDto expense)
+        {
+            context.Expenses.Add(new ExpenseEntity
+            {
+                Name = expense.Name,
+                Cost = expense.Cost
+            });
+            context.SaveChanges();
         }
     }
 }

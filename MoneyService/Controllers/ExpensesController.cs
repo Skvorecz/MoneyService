@@ -4,8 +4,9 @@ using MoneyService.Services;
 
 namespace MoneyService.Controllers
 {
+    [ApiController]
     [Route("api/expenses")]
-    public class ExpensesController
+    public class ExpensesController : ControllerBase
     {
         public IExpensesService ExpensesService { get; }
 
@@ -18,6 +19,13 @@ namespace MoneyService.Controllers
         public List<ExpenseDto> GetExpenses()
         {
             return ExpensesService.GetExpenses().Select(e => new ExpenseDto(e.Name, e.Cost)).ToList();
+        }
+
+        [HttpPost]
+        public void CreateExpense(ExpenseDto expense)
+        {
+            ExpensesService.CreateExpense(expense);
+            Ok();
         }
     }
 }

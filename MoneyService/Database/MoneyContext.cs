@@ -9,7 +9,6 @@ namespace MoneyService.Database
 
         public MoneyContext(DbContextOptions<MoneyContext> options) : base(options)
         {
-            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

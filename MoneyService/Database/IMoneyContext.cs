@@ -6,5 +6,6 @@ namespace MoneyService.Database
     public interface IMoneyContext
     {
         DbSet<ExpenseEntity> Expenses { get; set; }
+        int SaveChanges();
     }
 }
