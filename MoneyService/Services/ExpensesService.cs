@@ -6,26 +6,29 @@ namespace MoneyService.Services
 {
     public class ExpensesService : IExpensesService
     {
-        private readonly IMoneyContext context;
+        private readonly IMoneyRepository moneyRepository;
 
-        public ExpensesService(IMoneyContext context)
+        public ExpensesService(IMoneyRepository moneyRepository)
         {
-            this.context = context;
+            this.moneyRepository = moneyRepository;
         }
 
-        public List<ExpenseEntity> GetExpenses()
+        public List<ExpenseDto> GetExpenses()
         {
-            return context.Expenses.ToList();
+            return moneyRepository.GetExpenses()
+                .Select(e => new ExpenseDto(e.Name, e.Cost))
+                .ToList();
         }
 
         public void CreateExpense(ExpenseDto expense)
         {
-            context.Expenses.Add(new ExpenseEntity
+            var expenseEntity = new ExpenseEntity
             {
                 Name = expense.Name,
                 Cost = expense.Cost
-            });
-            context.SaveChanges();
+            };
+
+            moneyRepository.CreateExpense(expenseEntity);
         }
     }
 }

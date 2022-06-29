@@ -1,11 +1,10 @@
-﻿using MoneyService.Database.Entities;
-using MoneyService.Dto;
+﻿using MoneyService.Dto;
 
 namespace MoneyService.Services
 {
     public interface IExpensesService
     {
-        List<ExpenseEntity> GetExpenses();
+        List<ExpenseDto> GetExpenses();
         void CreateExpense(ExpenseDto expense);
     }
 }
